@@ -4,7 +4,7 @@ from tkinter import messagebox
 from _logger import logger_handler as _log
 
 
-# Configure logging settings
+# Init logging
 log = _log
 
 # Define the execute function to be called when the user clicks the Execute button
@@ -52,5 +52,7 @@ def execution_logic(src_path: str, tgt_path: str, file_ext: str, del_src: str) -
             for v_folder in v_folders:
                 os.system(f"rm -rf {v_source_dir}/{v_folder}")
     except Exception as err:
-        log(err)
+        # Log the error
+        log(msg=err)
+        # Display the error in UI messagebox
         messagebox.showerror("Error", err)
